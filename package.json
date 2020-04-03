@@ -1,0 +1,19 @@
+{
+  "name": "fullstackopen2020-osa3",
+  "version": "0.0.1",
+  "description": "An exercise project for a uni course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tommi Saarikangas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
