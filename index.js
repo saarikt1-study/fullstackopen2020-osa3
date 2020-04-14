@@ -75,6 +75,36 @@ app.post('/api/persons', (req, res, next) => {
   .catch(err => next(err))
 })
 
+app.put('/api/persons/:id', (req, res, next) => {
+  const body = req.body
+
+  const newPerson = {
+    name: body.name,
+    number: body.number
+  }
+  
+  Person.findByIdAndUpdate(req.params.id, newPerson)
+    .then(updatedPerson => {
+      res.json(updatedPerson.toJSON())
+    })
+    .catch(err => next(err))
+})
+
+app.put('/api/notes/:id', (request, response, next) => {
+  const body = request.body
+
+  const note = {
+    content: body.content,
+    important: body.important
+  }
+
+  Note.findByIdAndUpdate(request.params.id, note, { new: true })
+    .then(updatedNote => {
+      response.json(updatedNote.toJSON())
+    })
+    .catch(error => next(error))
+})
+
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
