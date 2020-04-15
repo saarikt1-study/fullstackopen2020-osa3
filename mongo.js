@@ -11,7 +11,7 @@ const newNumber = process.argv[4]
 
 const url =
   `mongodb+srv://tsaarika:${password}@phonebook-fxjvs.mongodb.net/phonebook?retryWrites=true&w=majority`
-  
+
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const personSchema = new mongoose.Schema({
@@ -20,7 +20,7 @@ const personSchema = new mongoose.Schema({
 })
 
 const Person = mongoose.model('Person', personSchema)
-  
+
 if (process.argv.length === 3) {
   console.log('Phonebook:')
   Person.find({}).then(result => {
@@ -38,10 +38,10 @@ else {
     name: newName,
     number: newNumber
   })
-  
-  person.save().then(response => {
+
+  person.save().then(() => {
     console.log(`Added ${newName} ${newNumber} to the phonebook`)
     mongoose.connection.close()
   })
-  
+
 }

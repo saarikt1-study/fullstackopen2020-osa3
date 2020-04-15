@@ -8,7 +8,7 @@ const url = process.env.MONGODB_URI
 
 console.log('connecting to', url)
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch((error) => {
@@ -23,7 +23,7 @@ const personSchema = new mongoose.Schema({
     minlength: [3, 'Name has to be at least 3 letters long']
   },
   number: {
-    type: Number,  
+    type: Number,
     required: [true, 'Missing phone number'],
     min: [10000000, 'Number has to be at least 8 digits long']
   }
